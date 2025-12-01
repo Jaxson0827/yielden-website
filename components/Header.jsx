@@ -34,15 +34,18 @@ export default function Header() {
                 <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="text-gray-700 hover:text-black transition-colors">
                   Home
                 </a>
-                <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/services" className="text-gray-700 hover:text-black transition-colors">
                   Services
-                </a>
+                </Link>
                 <a href="#portfolio" onClick={(e) => scrollToSection(e, 'portfolio')} className="text-gray-700 hover:text-black transition-colors">
                   Portfolio
                 </a>
-                <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/pricing" className="text-gray-700 hover:text-black transition-colors">
+                  Pricing
+                </Link>
+                <Link href="/about" className="text-gray-700 hover:text-black transition-colors">
                   About
-                </a>
+                </Link>
                 <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="text-gray-700 hover:text-black transition-colors">
                   Contact
                 </a>
@@ -112,15 +115,18 @@ export default function Header() {
                   <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="text-gray-700 hover:text-black transition-colors py-2">
                     Home
                   </a>
-                  <a href="#services" onClick={(e) => scrollToSection(e, 'services')} className="text-gray-700 hover:text-black transition-colors py-2">
+                  <Link href="/services" onClick={handleNavClick} className="text-gray-700 hover:text-black transition-colors py-2">
                     Services
-                  </a>
+                  </Link>
                   <a href="#portfolio" onClick={(e) => scrollToSection(e, 'portfolio')} className="text-gray-700 hover:text-black transition-colors py-2">
                     Portfolio
                   </a>
-                  <a href="#about" onClick={(e) => scrollToSection(e, 'about')} className="text-gray-700 hover:text-black transition-colors py-2">
+                  <Link href="/pricing" onClick={handleNavClick} className="text-gray-700 hover:text-black transition-colors py-2">
+                    Pricing
+                  </Link>
+                  <Link href="/about" onClick={handleNavClick} className="text-gray-700 hover:text-black transition-colors py-2">
                     About
-                  </a>
+                  </Link>
                   <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="text-gray-700 hover:text-black transition-colors py-2">
                     Contact
                   </a>
