@@ -64,30 +64,30 @@ export default function Pricing() {
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`bg-white border-2 rounded-lg p-8 ${
+                className={`bg-white border-2 rounded-lg p-6 md:p-8 ${
                   plan.popular
                     ? 'border-[#00A5FF] shadow-lg'
                     : 'border-gray-100'
                 }`}
               >
                 {plan.popular && (
-                  <div className="bg-[#00A5FF] text-white text-sm font-medium px-4 py-1 rounded-full inline-block mb-4">
+                  <div className="bg-[#00A5FF] text-white text-xs sm:text-sm font-medium px-3 sm:px-4 py-1 rounded-full inline-block mb-3 md:mb-4">
                     Most Popular
                   </div>
                 )}
-                <h3 className="text-2xl font-medium text-black mb-2">{plan.name}</h3>
-                <div className="mb-4">
-                  <span className="text-4xl font-medium text-black">{plan.price}</span>
-                  <span className="text-gray-600 ml-2">one-time</span>
+                <h3 className="text-xl md:text-2xl font-medium text-black mb-2">{plan.name}</h3>
+                <div className="mb-3 md:mb-4">
+                  <span className="text-3xl sm:text-4xl font-medium text-black">{plan.price}</span>
+                  <span className="text-sm sm:text-base text-gray-600 ml-2">one-time</span>
                 </div>
-                <p className="text-gray-600 mb-8 leading-relaxed">{plan.description}</p>
-                <ul className="space-y-4 mb-8">
+                <p className="text-sm md:text-base text-gray-600 mb-6 md:mb-8 leading-relaxed">{plan.description}</p>
+                <ul className="space-y-3 md:space-y-4 mb-6 md:mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start">
                       <svg className="w-5 h-5 text-[#00A5FF] mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
-                      <span className="text-gray-700">{feature}</span>
+                      <span className="text-sm md:text-base text-gray-700">{feature}</span>
                     </li>
                   ))}
                 </ul>

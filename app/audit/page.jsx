@@ -63,9 +63,9 @@ export default function Audit() {
                   type="checkbox"
                   id="seo"
                   name="seo"
-                  className="mt-1 mr-3 w-5 h-5 text-[#00A5FF] border-gray-300 rounded focus:ring-[#00A5FF]"
+                  className="mt-1 mr-3 w-5 h-5 text-[#00A5FF] border-gray-300 rounded focus:ring-[#00A5FF] flex-shrink-0"
                 />
-                <label htmlFor="seo" className="text-gray-700">
+                <label htmlFor="seo" className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   I want SEO analysis included in my audit
                 </label>
               </div>

@@ -15,12 +15,12 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION */}
       <section id="home" className="py-20 md:py-28">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="max-w-4xl">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-black leading-tight mb-5 md:mb-6">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-black leading-tight mb-5 md:mb-6 break-words">
               Websites Built to Make Money.
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 md:mb-10 leading-relaxed">

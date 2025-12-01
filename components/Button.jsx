@@ -8,7 +8,7 @@ export default function Button({
   className = '',
   type = 'button'
 }) {
-  const baseClasses = 'px-8 py-4 rounded-lg font-medium text-lg transition-colors text-center'
+  const baseClasses = 'px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-base sm:text-lg transition-colors text-center'
   const variants = {
     primary: 'bg-[#00A5FF] text-white hover:bg-[#0095E6]',
     secondary: 'bg-white border-2 border-gray-200 text-black hover:border-gray-300'
