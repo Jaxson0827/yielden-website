@@ -76,10 +76,22 @@ export default function Home() {
 
             {/* Right Column - Visual Grid */}
             <div className={`grid grid-cols-2 gap-4 lg:gap-6 transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#00A5FF]/20 to-[#00A5FF]/5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"></div>
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-slate-200 to-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"></div>
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-slate-200 to-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"></div>
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#00A5FF]/20 to-[#00A5FF]/5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"></div>
+              {/* Replace 'hero1.webp' with your uploaded WebP file */}
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-[#00A5FF]/20 to-[#00A5FF]/5">
+                <img src="/images/hero/hero1.webp" alt="Website preview" className="w-full h-full object-cover" />
+              </div>
+              {/* Replace 'hero2.webp' with your uploaded WebP file */}
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-slate-200 to-slate-100">
+                <img src="/images/hero/hero2.webp" alt="Website preview" className="w-full h-full object-cover" />
+              </div>
+              {/* Replace 'hero3.webp' with your uploaded WebP file */}
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-slate-200 to-slate-100">
+                <img src="/images/hero/hero3.webp" alt="Website preview" className="w-full h-full object-cover" />
+              </div>
+              {/* Replace 'hero4.webp' with your uploaded WebP file */}
+              <div className="aspect-square rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-[#00A5FF]/20 to-[#00A5FF]/5">
+                <img src="/images/hero/hero4.webp" alt="Website preview" className="w-full h-full object-cover" />
+              </div>
             </div>
           </div>
 
