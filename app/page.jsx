@@ -5,23 +5,16 @@ import { useEffect, useRef, useState } from 'react'
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false)
-  const [servicesVisible, setServicesVisible] = useState(false)
   const heroRef = useRef(null)
-  const cardsRef = useRef(null)
-  const servicesRef = useRef(null)
+  const statsRef = useRef(null)
+  const pathRef = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            if (entry.target === heroRef.current) {
-              setIsVisible(true)
-            } else if (entry.target === cardsRef.current) {
-              setIsVisible(true)
-            } else if (entry.target === servicesRef.current) {
-              setServicesVisible(true)
-            }
+            setIsVisible(true)
             observer.unobserve(entry.target)
           }
         })
@@ -30,13 +23,13 @@ export default function Home() {
     )
 
     if (heroRef.current) observer.observe(heroRef.current)
-    if (cardsRef.current) observer.observe(cardsRef.current)
-    if (servicesRef.current) observer.observe(servicesRef.current)
+    if (statsRef.current) observer.observe(statsRef.current)
+    if (pathRef.current) observer.observe(pathRef.current)
 
     return () => {
       if (heroRef.current) observer.unobserve(heroRef.current)
-      if (cardsRef.current) observer.unobserve(cardsRef.current)
-      if (servicesRef.current) observer.unobserve(servicesRef.current)
+      if (statsRef.current) observer.unobserve(statsRef.current)
+      if (pathRef.current) observer.unobserve(pathRef.current)
     }
   }, [])
 
@@ -47,253 +40,232 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Placeholder handler
     console.log('Form submitted')
   }
 
   return (
     <main className="min-h-screen bg-white overflow-x-hidden">
       {/* HERO SECTION */}
-      <section id="home" className="py-20 md:py-28 relative bg-gradient-to-b from-white via-white to-gray-50/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="max-w-4xl" ref={heroRef}>
-            <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-black leading-[1.1] mb-5 md:mb-6 break-words tracking-tight transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              Websites Built to Make Money.
-            </h1>
-            <p className={`text-lg sm:text-xl md:text-2xl text-gray-600 mb-8 md:mb-10 leading-relaxed tracking-slight transition-all duration-700 ease-out delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              AI-powered, conversion-optimized websites built in 48 hours.
+      <section id="home" className="pt-24 md:pt-32 pb-16 md:pb-24 relative bg-gradient-to-b from-slate-50 via-blue-50/30 to-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center" ref={heroRef}>
+            {/* Left Column - Text */}
+            <div className={`transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-semibold text-black leading-[1.05] mb-6 md:mb-8 break-words tracking-tight">
+                Websites Built to Make Money.
+              </h1>
+              <p className="text-xl sm:text-2xl md:text-3xl text-gray-600 mb-10 md:mb-12 leading-relaxed tracking-slight max-w-2xl">
+                AI-powered, conversion-optimized websites built in 48 hours. Fast, modern, and designed to grow your business.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 mb-12 md:mb-16">
+                <a
+                  href="#contact"
+                  onClick={scrollToContact}
+                  className="inline-flex items-center justify-center bg-[#00A5FF] text-white px-8 py-4 rounded-xl font-medium text-lg hover:bg-[#0095E6] transition-all duration-300 shadow-lg shadow-[#00A5FF]/20 hover:shadow-xl hover:shadow-[#00A5FF]/30 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  Get a Free Audit
+                </a>
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center justify-center bg-white border-2 border-gray-200 text-black px-8 py-4 rounded-xl font-medium text-lg hover:border-gray-300 transition-all duration-300 shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  See Pricing
+                </Link>
+              </div>
+            </div>
+
+            {/* Right Column - Visual Grid */}
+            <div className={`grid grid-cols-2 gap-4 lg:gap-6 transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#00A5FF]/20 to-[#00A5FF]/5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"></div>
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-slate-200 to-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"></div>
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-slate-200 to-slate-100 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"></div>
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#00A5FF]/20 to-[#00A5FF]/5 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"></div>
+            </div>
+          </div>
+
+          {/* Trusted By Section */}
+          <div className="mt-16 md:mt-20 pt-12 md:pt-16 border-t border-gray-200/60">
+            <p className="text-sm font-medium text-gray-500 text-center mb-8 tracking-wide uppercase">Trusted by industry leaders</p>
+            <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+              <div className="text-2xl font-bold text-gray-400">Vercel</div>
+              <div className="text-2xl font-bold text-gray-400">Next.js</div>
+              <div className="text-2xl font-bold text-gray-400">GitHub</div>
+              <div className="text-2xl font-bold text-gray-400">OpenAI</div>
+              <div className="text-2xl font-bold text-gray-400">Tailwind</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CHOOSE YOUR PATH SECTION */}
+      <section className="py-24 md:py-32 bg-white" ref={pathRef}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
+              Choose Your Path
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed tracking-slight">
+              Start your journey with the service that fits your needs. Each path leads to growth.
             </p>
-            <div className={`flex flex-col sm:flex-row gap-3 sm:gap-4 transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <a
-                href="#contact"
-                onClick={scrollToContact}
-                className="w-full sm:w-auto bg-[#00A5FF] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-base sm:text-lg hover:bg-[#0095E6] transition-all duration-300 text-center hover:scale-[1.02] hover:shadow-lg hover:shadow-[#00A5FF]/20 active:scale-[0.98]"
-              >
-                Get a Free Audit
-              </a>
-              <Link
-                href="/pricing"
-                className="w-full sm:w-auto bg-white border-2 border-gray-200 text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-base sm:text-lg hover:border-gray-300 transition-all duration-300 text-center hover:scale-[1.02] hover:shadow-md active:scale-[0.98]"
-              >
-                See Pricing
+          </div>
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            <div className={`bg-white border border-gray-200 p-8 md:p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="w-14 h-14 bg-[#00A5FF]/10 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-7 h-7 text-[#00A5FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                </svg>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-semibold text-black mb-4 tracking-tight">Website Build</h3>
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed tracking-slight mb-6">
+                Get a conversion-optimized website built in 48 hours with AI-powered design and best practices.
+              </p>
+              <Link href="/services" className="text-[#00A5FF] font-medium hover:text-[#0095E6] transition-colors inline-flex items-center">
+                Learn more
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+            <div className={`bg-white border border-gray-200 p-8 md:p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="w-14 h-14 bg-[#00A5FF]/10 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-7 h-7 text-[#00A5FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-semibold text-black mb-4 tracking-tight">SEO</h3>
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed tracking-slight mb-6">
+                Drive organic traffic and increase visibility with comprehensive search engine optimization.
+              </p>
+              <Link href="/services" className="text-[#00A5FF] font-medium hover:text-[#0095E6] transition-colors inline-flex items-center">
+                Learn more
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+            </div>
+            <div className={`bg-white border border-gray-200 p-8 md:p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="w-14 h-14 bg-[#00A5FF]/10 rounded-xl flex items-center justify-center mb-6">
+                <svg className="w-7 h-7 text-[#00A5FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                </svg>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-semibold text-black mb-4 tracking-tight">PPC</h3>
+              <p className="text-base md:text-lg text-gray-600 leading-relaxed tracking-slight mb-6">
+                Maximize ROI with data-driven pay-per-click campaigns that scale your business growth.
+              </p>
+              <Link href="/services" className="text-[#00A5FF] font-medium hover:text-[#0095E6] transition-colors inline-flex items-center">
+                Learn more
+                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="border-t border-gray-200/40"></div>
-
-      {/* VALUE PROPS */}
-      <section id="about" className="py-20 md:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-black text-center mb-12 md:mb-16 tracking-tight leading-[1.1]">
-            Why Yeelden
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" ref={cardsRef}>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 bg-[#00A5FF]/10 rounded-lg flex items-center justify-center mb-5 md:mb-6">
-                <svg className="w-6 h-6 text-[#00A5FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-black mb-2 md:mb-3 tracking-tight">Fast 48-Hour Builds</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Get your website live in just two days, without compromising on quality or conversion optimization.
-              </p>
+      {/* STATS SECTION */}
+      <section className="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50" ref={statsRef}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
+              Website Development Pays Off
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed tracking-slight">
+              Real results from real clients. See how Yeelden delivers measurable growth.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            <div className={`text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">48hr</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Turnaround Time</p>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 bg-[#00A5FF]/10 rounded-lg flex items-center justify-center mb-5 md:mb-6">
-                <svg className="w-6 h-6 text-[#00A5FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-black mb-2 md:mb-3 tracking-tight">AI Optimization</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Leverage cutting-edge AI to optimize every element for maximum conversions and user engagement.
-              </p>
+            <div className={`text-center transition-all duration-700 ease-out delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">+85%</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">SEO Growth</p>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 bg-[#00A5FF]/10 rounded-lg flex items-center justify-center mb-5 md:mb-6">
-                <svg className="w-6 h-6 text-[#00A5FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-black mb-2 md:mb-3 tracking-tight">Built to Convert</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Every design decision is backed by conversion data to turn visitors into customers.
-              </p>
+            <div className={`text-center transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">98%</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Client Retention</p>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="w-12 h-12 bg-[#00A5FF]/10 rounded-lg flex items-center justify-center mb-5 md:mb-6">
-                <svg className="w-6 h-6 text-[#00A5FF]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                </svg>
-              </div>
-              <h3 className="text-lg md:text-xl font-semibold text-black mb-2 md:mb-3 tracking-tight">Tracking + Analytics</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Comprehensive analytics and tracking built-in so you know exactly what's working.
-              </p>
+            <div className={`text-center transition-all duration-700 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">+40%</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Avg. Conversion</p>
             </div>
           </div>
         </div>
       </section>
 
-      <div className="border-t border-gray-200/40"></div>
-
-      {/* SERVICES SECTION */}
-      <section id="services" className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-black text-center mb-12 md:mb-16 tracking-tight leading-[1.1]">
-            Our Services
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8" ref={servicesRef}>
-            <div className={`bg-white border border-gray-100 p-6 md:p-8 rounded-lg hover:border-gray-200 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 ${servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-700 ease-out`}>
-              <h3 className="text-xl md:text-2xl font-semibold text-black mb-3 md:mb-4 tracking-tight">Website Builds</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Custom websites designed to convert visitors into customers, built in 48 hours.
-              </p>
-            </div>
-            <div className={`bg-white border border-gray-100 p-6 md:p-8 rounded-lg hover:border-gray-200 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 ${servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-700 ease-out delay-100`}>
-              <h3 className="text-xl md:text-2xl font-semibold text-black mb-3 md:mb-4 tracking-tight">SEO</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Search engine optimization that drives organic traffic and increases visibility.
-              </p>
-            </div>
-            <div className={`bg-white border border-gray-100 p-6 md:p-8 rounded-lg hover:border-gray-200 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 ${servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-700 ease-out delay-200`}>
-              <h3 className="text-xl md:text-2xl font-semibold text-black mb-3 md:mb-4 tracking-tight">PPC</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Pay-per-click campaigns that maximize ROI and scale your business growth.
-              </p>
-            </div>
-            <div className={`bg-white border border-gray-100 p-6 md:p-8 rounded-lg hover:border-gray-200 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-1 ${servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'} transition-all duration-700 ease-out delay-300`}>
-              <h3 className="text-xl md:text-2xl font-semibold text-black mb-3 md:mb-4 tracking-tight">Yeelden Portal</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Your dedicated dashboard to track performance, request changes, and grow.
-              </p>
-            </div>
+      {/* TESTIMONIALS SECTION */}
+      <section className="py-24 md:py-32 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
+              Client Success Stories
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed tracking-slight">
+              Real businesses, real results. See how Yeelden transforms online presence.
+            </p>
           </div>
-        </div>
-      </section>
-
-      <div className="border-t border-gray-200/40"></div>
-
-      {/* HOW IT WORKS */}
-      <section className="py-20 md:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-black text-center mb-12 md:mb-16 tracking-tight leading-[1.1]">
-            How It Works
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-            <div className="text-center">
-              <div className="w-14 h-14 md:w-16 md:h-16 bg-[#00A5FF] rounded-full flex items-center justify-center mx-auto mb-5 md:mb-6">
-                <span className="text-white text-xl md:text-2xl font-medium">1</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-black mb-3 md:mb-4 tracking-tight">Build</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                We create your conversion-optimized website using AI-powered design and best practices.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-14 h-14 md:w-16 md:h-16 bg-[#00A5FF] rounded-full flex items-center justify-center mx-auto mb-5 md:mb-6">
-                <span className="text-white text-xl md:text-2xl font-medium">2</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-black mb-3 md:mb-4 tracking-tight">Launch</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Your website goes live in 48 hours, fully optimized and ready to convert visitors.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-14 h-14 md:w-16 md:h-16 bg-[#00A5FF] rounded-full flex items-center justify-center mx-auto mb-5 md:mb-6">
-                <span className="text-white text-xl md:text-2xl font-medium">3</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-black mb-3 md:mb-4 tracking-tight">Optimize</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Continuous optimization based on real data to improve conversions and performance.
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-14 h-14 md:w-16 md:h-16 bg-[#00A5FF] rounded-full flex items-center justify-center mx-auto mb-5 md:mb-6">
-                <span className="text-white text-xl md:text-2xl font-medium">4</span>
-              </div>
-              <h3 className="text-xl md:text-2xl font-semibold text-black mb-3 md:mb-4 tracking-tight">Grow</h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed tracking-slight">
-                Scale your business with data-driven insights and ongoing support from our team.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div className="border-t border-gray-200/40"></div>
-
-      {/* TESTIMONIALS */}
-      <section className="py-20 md:py-28 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-black text-center mb-12 md:mb-16 tracking-tight leading-[1.1]">
-            What Clients Say
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-5 md:mb-6">
-                <svg className="w-7 h-7 md:w-8 md:h-8 text-[#00A5FF]" fill="currentColor" viewBox="0 0 24 24">
+          <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="mb-6">
+                <svg className="w-10 h-10 text-[#00A5FF]" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.984zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
               </div>
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-5 md:mb-6 tracking-slight">
-                "Yeelden transformed our online presence. Our conversion rate increased by 40% in the first month."
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6 tracking-slight">
+                "Yeelden transformed our online presence. Our conversion rate increased by 40% in the first month, and the 48-hour turnaround was incredible."
               </p>
               <div>
-                <p className="font-semibold text-black">Sarah Johnson</p>
-                <p className="text-gray-500 text-sm">CEO, TechStart Inc.</p>
+                <p className="font-semibold text-black text-lg">Sarah Johnson</p>
+                <p className="text-gray-500">CEO, TechStart Inc.</p>
               </div>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-5 md:mb-6">
-                <svg className="w-7 h-7 md:w-8 md:h-8 text-[#00A5FF]" fill="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="mb-6">
+                <svg className="w-10 h-10 text-[#00A5FF]" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.984zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
               </div>
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-5 md:mb-6 tracking-slight">
-                "The 48-hour turnaround was incredible. The website looks amazing and performs even better."
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6 tracking-slight">
+                "The website looks amazing and performs even better. Best investment we've made for our business growth."
               </p>
               <div>
-                <p className="font-semibold text-black">Michael Chen</p>
-                <p className="text-gray-500 text-sm">Founder, Growth Labs</p>
+                <p className="font-semibold text-black text-lg">Michael Chen</p>
+                <p className="text-gray-500">Founder, Growth Labs</p>
               </div>
             </div>
-            <div className="bg-white p-6 md:p-8 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1">
-              <div className="mb-5 md:mb-6">
-                <svg className="w-7 h-7 md:w-8 md:h-8 text-[#00A5FF]" fill="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white p-8 md:p-10 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="mb-6">
+                <svg className="w-10 h-10 text-[#00A5FF]" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.996 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.984zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
                 </svg>
               </div>
-              <p className="text-base md:text-lg text-gray-700 leading-relaxed mb-5 md:mb-6 tracking-slight">
-                "Best investment we've made. The AI optimization features are game-changing for our business."
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6 tracking-slight">
+                "The AI optimization features are game-changing. We've seen consistent growth month over month since launch."
               </p>
               <div>
-                <p className="font-semibold text-black">Emily Rodriguez</p>
-                <p className="text-gray-500 text-sm">Marketing Director, ScaleUp Co.</p>
+                <p className="font-semibold text-black text-lg">Emily Rodriguez</p>
+                <p className="text-gray-500">Marketing Director, ScaleUp Co.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-
-      <div className="border-t border-gray-200/40"></div>
 
       {/* CONTACT SECTION */}
-      <section id="contact" className="py-20 md:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <section id="contact" className="py-24 md:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-black text-center mb-5 md:mb-6 tracking-tight leading-[1.1]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-black text-center mb-6 tracking-tight leading-[1.1]">
               Get Started
             </h2>
-            <p className="text-lg md:text-xl text-gray-600 text-center mb-10 md:mb-12 leading-relaxed tracking-slight">
+            <p className="text-xl md:text-2xl text-gray-600 text-center mb-12 md:mb-16 leading-relaxed tracking-slight">
               Ready to build a website that makes money? Let's talk.
             </p>
-            <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-black mb-2">
                     Name
@@ -303,7 +275,7 @@ export default function Home() {
                     id="name"
                     name="name"
                     required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00A5FF] transition-colors text-base"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#00A5FF] focus:ring-2 focus:ring-[#00A5FF]/10 transition-all text-base"
                     placeholder="Your name"
                   />
                 </div>
@@ -316,12 +288,12 @@ export default function Home() {
                     id="email"
                     name="email"
                     required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00A5FF] transition-colors text-base"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#00A5FF] focus:ring-2 focus:ring-[#00A5FF]/10 transition-all text-base"
                     placeholder="your@email.com"
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                 <div>
                   <label htmlFor="business" className="block text-sm font-medium text-black mb-2">
                     Business Name
@@ -331,7 +303,7 @@ export default function Home() {
                     id="business"
                     name="business"
                     required
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00A5FF] transition-colors text-base"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#00A5FF] focus:ring-2 focus:ring-[#00A5FF]/10 transition-all text-base"
                     placeholder="Your business name"
                   />
                 </div>
@@ -343,7 +315,7 @@ export default function Home() {
                     type="url"
                     id="website"
                     name="website"
-                    className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00A5FF] transition-colors text-base"
+                    className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#00A5FF] focus:ring-2 focus:ring-[#00A5FF]/10 transition-all text-base"
                     placeholder="https://yourwebsite.com"
                   />
                 </div>
@@ -357,14 +329,14 @@ export default function Home() {
                   name="question"
                   rows={5}
                   required
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:border-[#00A5FF] transition-colors resize-none text-base"
+                  className="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:border-[#00A5FF] focus:ring-2 focus:ring-[#00A5FF]/10 transition-all resize-none text-base"
                   placeholder="Tell us about your project..."
                 />
               </div>
-              <div className="pt-2 md:pt-4">
+              <div className="pt-4">
                 <button
                   type="submit"
-                  className="w-full bg-[#00A5FF] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium text-base sm:text-lg hover:bg-[#0095E6] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#00A5FF]/20 active:scale-[0.98]"
+                  className="w-full bg-[#00A5FF] text-white px-8 py-4 rounded-xl font-medium text-lg hover:bg-[#0095E6] transition-all duration-300 shadow-lg shadow-[#00A5FF]/20 hover:shadow-xl hover:shadow-[#00A5FF]/30 hover:scale-[1.02] active:scale-[0.98]"
                 >
                   Get a Free Audit
                 </button>
