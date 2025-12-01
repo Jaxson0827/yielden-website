@@ -22,7 +22,7 @@ export default function Header() {
   }
 
   return (
-    <header className="border-b border-gray-100 sticky top-0 bg-white z-50">
+    <header className="border-b border-gray-100 sticky top-0 bg-white z-50 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
         <div className="flex items-center justify-between">
           <Link href="/" className="text-xl sm:text-2xl font-semibold text-black">
@@ -31,43 +31,43 @@ export default function Header() {
           <nav className="hidden md:flex items-center gap-8">
             {isHomePage ? (
               <>
-                <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="text-gray-700 hover:text-black transition-colors">
+                <a href="#home" onClick={(e) => scrollToSection(e, 'home')} className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Home
                 </a>
-                <Link href="/services" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/services" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Services
                 </Link>
-                <Link href="/portfolio" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/portfolio" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Portfolio
                 </Link>
-                <Link href="/pricing" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/pricing" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Pricing
                 </Link>
-                <Link href="/about" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/about" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   About
                 </Link>
-                <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="text-gray-700 hover:text-black transition-colors">
+                <a href="#contact" onClick={(e) => scrollToSection(e, 'contact')} className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Contact
                 </a>
               </>
             ) : (
               <>
-                <Link href="/" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Home
                 </Link>
-                <Link href="/services" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/services" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Services
                 </Link>
-                <Link href="/portfolio" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/portfolio" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Portfolio
                 </Link>
-                <Link href="/pricing" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/pricing" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Pricing
                 </Link>
-                <Link href="/about" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/about" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   About
                 </Link>
-                <Link href="/contact" className="text-gray-700 hover:text-black transition-colors">
+                <Link href="/contact" className="text-gray-700 hover:text-[#00A5FF] active:text-[#0095E6] transition-all duration-200 relative pb-1 after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-[#00A5FF] hover:after:w-full after:transition-all after:duration-200">
                   Contact
                 </Link>
               </>
@@ -78,14 +78,14 @@ export default function Header() {
               <a
                 href="#contact"
                 onClick={(e) => scrollToSection(e, 'contact')}
-                className="hidden sm:inline-block bg-[#00A5FF] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-medium text-sm sm:text-base hover:bg-[#0095E6] transition-colors"
+                className="hidden sm:inline-block bg-[#00A5FF] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-medium text-sm sm:text-base hover:bg-[#0095E6] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#00A5FF]/20 active:scale-[0.98]"
               >
                 Get a Free Audit
               </a>
             ) : (
               <Link
                 href="/audit"
-                className="hidden sm:inline-block bg-[#00A5FF] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-medium text-sm sm:text-base hover:bg-[#0095E6] transition-colors"
+                className="hidden sm:inline-block bg-[#00A5FF] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-medium text-sm sm:text-base hover:bg-[#0095E6] transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-[#00A5FF]/20 active:scale-[0.98]"
               >
                 Get a Free Audit
               </Link>
