@@ -9,6 +9,7 @@ export default function Pricing() {
   const [isVisible, setIsVisible] = useState(false)
   const [openFaq, setOpenFaq] = useState(null)
   const heroRef = useRef(null)
+  const statsRef = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -24,9 +25,11 @@ export default function Pricing() {
     )
 
     if (heroRef.current) observer.observe(heroRef.current)
+    if (statsRef.current) observer.observe(statsRef.current)
 
     return () => {
       if (heroRef.current) observer.unobserve(heroRef.current)
+      if (statsRef.current) observer.unobserve(statsRef.current)
     }
   }, [])
 
@@ -359,6 +362,38 @@ export default function Pricing() {
                   ))}
                 </tbody>
               </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS SECTION */}
+      <section className="py-24 md:py-32 bg-gradient-to-b from-white to-gray-50" ref={statsRef}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 md:mb-20">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
+              Why Modern Websites Perform Better
+            </h2>
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed tracking-slight">
+              These are industry-wide performance benchmarks showing what modern, optimized websites typically achieve.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+            <div className={`text-center transition-all duration-700 ease-out ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">1 Week</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Turnaround Time</p>
+            </div>
+            <div className={`text-center transition-all duration-700 ease-out delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">30–50%</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Average Increase in SEO Visibility</p>
+            </div>
+            <div className={`text-center transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">40–60%</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Typical Reduction in Bounce Rates After Modern Redesigns</p>
+            </div>
+            <div className={`text-center transition-all duration-700 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">10–25%</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Average Increase in Conversion Rates from Modern UX + Speed Improvements</p>
             </div>
           </div>
         </div>
