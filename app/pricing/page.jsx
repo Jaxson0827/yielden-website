@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import Button from '@/components/Button'
 import { useEffect, useRef, useState } from 'react'
 
@@ -184,16 +185,16 @@ export default function Pricing() {
               </p>
             </div>
 
-            {/* Right Column - Abstract Visual */}
+            {/* Right Column - Hero Image */}
             <div className={`transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <div className="relative aspect-square rounded-3xl bg-gradient-to-br from-[#00A5FF]/15 via-blue-100/20 to-slate-100/40 shadow-2xl overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-tr from-[#00A5FF]/5 to-transparent"></div>
-                <div className="absolute top-1/4 left-1/4 w-20 h-20 bg-[#00A5FF]/25 rounded-full blur-2xl"></div>
-                <div className="absolute bottom-1/4 right-1/4 w-28 h-28 bg-blue-200/30 rounded-full blur-3xl"></div>
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                  <div className="w-24 h-24 border-2 border-[#00A5FF]/30 rounded-2xl rotate-12"></div>
-                </div>
-                <div className="absolute top-1/3 right-1/3 w-12 h-12 bg-[#00A5FF]/20 rounded-lg rotate-45"></div>
+                <Image
+                  src="/images/pricing/pricing-header.webp"
+                  alt="Pricing"
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
             </div>
           </div>
