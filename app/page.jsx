@@ -181,10 +181,10 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16 md:mb-20">
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-semibold text-black mb-6 tracking-tight leading-[1.1]">
-              Website Development Pays Off
+              Modern Websites Deliver Better Results
             </h2>
             <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed tracking-slight">
-              Real results from real clients. See how Yeelden delivers measurable growth.
+              These industry-wide benchmarks show what modern, optimized websites can typically achieve.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
@@ -193,16 +193,16 @@ export default function Home() {
               <p className="text-lg md:text-xl text-gray-600 font-medium">Turnaround Time</p>
             </div>
             <div className={`text-center transition-all duration-700 ease-out delay-100 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">+85%</div>
-              <p className="text-lg md:text-xl text-gray-600 font-medium">SEO Growth</p>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">30–50%</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Average Increase in SEO Visibility</p>
             </div>
             <div className={`text-center transition-all duration-700 ease-out delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">98%</div>
-              <p className="text-lg md:text-xl text-gray-600 font-medium">Client Retention</p>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">40–60%</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Typical Reduction in Bounce Rates After Modern Redesigns</p>
             </div>
             <div className={`text-center transition-all duration-700 ease-out delay-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">+40%</div>
-              <p className="text-lg md:text-xl text-gray-600 font-medium">Avg. Conversion</p>
+              <div className="text-5xl md:text-6xl lg:text-7xl font-semibold text-[#00A5FF] mb-3 tracking-tight">10–25%</div>
+              <p className="text-lg md:text-xl text-gray-600 font-medium">Average Increase in Conversion Rates from Modern UX + Speed Improvements</p>
             </div>
           </div>
         </div>
