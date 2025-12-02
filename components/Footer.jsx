@@ -37,10 +37,9 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-black mb-4 text-lg">Services</h4>
             <ul className="space-y-3">
-              <li><Link href="/services" className="text-base text-gray-600 hover:text-[#00A5FF] transition-colors">Website Builds</Link></li>
-              <li><Link href="/services" className="text-base text-gray-600 hover:text-[#00A5FF] transition-colors">SEO</Link></li>
-              <li><Link href="/services" className="text-base text-gray-600 hover:text-[#00A5FF] transition-colors">PPC</Link></li>
-              <li><Link href="/services" className="text-base text-gray-600 hover:text-[#00A5FF] transition-colors">Yeelden Portal</Link></li>
+              <li><Link href="/services#website-builds" className="text-base text-gray-600 hover:text-[#00A5FF] transition-colors">Website Builds</Link></li>
+              <li><Link href="/services#seo" className="text-base text-gray-600 hover:text-[#00A5FF] transition-colors">SEO</Link></li>
+              <li><Link href="/services#ppc" className="text-base text-gray-600 hover:text-[#00A5FF] transition-colors">PPC</Link></li>
             </ul>
           </div>
           <div>
