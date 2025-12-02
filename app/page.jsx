@@ -97,7 +97,7 @@ export default function Home() {
 
           {/* Trusted By Section */}
           <div className="mt-16 md:mt-20 pt-12 md:pt-16 border-t border-gray-200/60">
-            <p className="text-sm font-medium text-gray-500 text-center mb-8 tracking-wide uppercase">Trusted by industry leaders</p>
+            <p className="text-sm font-medium text-gray-500 text-center mb-8 tracking-wide uppercase">Technologies We Work With</p>
             <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12 lg:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
               <div className="text-2xl font-bold text-gray-400">Vercel</div>
               <div className="text-2xl font-bold text-gray-400">Next.js</div>
